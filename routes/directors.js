@@ -6,6 +6,6 @@ const {getDirectors, getOneDirector} = require('../controllers/directorCtrl');
 
 dirRouter.get('/directors', getDirectors);
 
-dirRouter.get('/directors', getOneDirector);
+dirRouter.get('/directors/:id', getOneDirector);
 
 module.exports = dirRouter;
