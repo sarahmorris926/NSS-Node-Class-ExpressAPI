@@ -6,7 +6,7 @@ const routes = require('./routes/directors');
 
 
 // middleware stack starts here
-app.use(routes);
+app.use("/api/v1/", routes);
 
 
 
