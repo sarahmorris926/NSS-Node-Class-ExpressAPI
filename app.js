@@ -14,7 +14,20 @@ app.use("/api/v1/", routes);
 
 // TODO: Ad error handler
 
+app.use((req, res, next) => {
+    let error = new Error("Not found");
+    err. status = 404;
+    next(err);
+})
 
+// custom error handler must be at very bottom
+app.use( (err, req, res, next) => {
+    // all errors go to here
+    res.json({
+        message: "Error error error!",
+        err: err.message
+    });
+});
 
 
 const port = process.env.PORT || 8080;
