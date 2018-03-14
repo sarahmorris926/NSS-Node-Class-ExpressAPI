@@ -13,7 +13,7 @@ module.exports.getAll = () => {
 
 module.exports.getOne = (dirId) => {
     return new Promise( (resolve, reject) => {
-        db.get(`SELECT directors.*, movies.name AS "Movie Name"
+        db.get(`SELECT directors.*, movies.name AS "Movie Name", movies.studio AS "Studio"
                 FROM directors
                 JOIN movies ON dir_id = movies.director_id
                 WHERE dir_id=${dirId}`, (err, director) => {
