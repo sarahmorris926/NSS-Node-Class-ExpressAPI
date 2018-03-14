@@ -1,3 +1,4 @@
+
 const { Router } = require('express');
 const movieRouter = Router();
 const {getAllMovies, getOneMovie} = require('../controllers/movieCtrl');

@@ -1,3 +1,4 @@
+
 const { getAll, getOne } = require('../models/Director');
 
 module.exports.getDirectors = (req, res, next) => {
