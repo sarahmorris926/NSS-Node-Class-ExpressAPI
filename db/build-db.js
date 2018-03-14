@@ -6,7 +6,7 @@ const { directors } = require('../data/directors');
 // inProduction is true or false, but sqlite doesn't support. So we set to Int & use 1 and 0
 db.serialize(function() {
     // Need to drop in this order, since shows depends on directors id props
-    db.run(`DROP TABLE IF EXISTS shows`);
+    db.run(`DROP TABLE IF EXISTS movies`);
     db.run(`DROP TABLE IF EXISTS directors`);
 
     db.run(`CREATE TABLE IF NOT EXISTS directors (
