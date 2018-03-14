@@ -1,15 +1,9 @@
 const { Router } = require('express');
 const dirRouter = Router();
-
-const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./db/mediaStore.sqlite');
+const {getDirectors} = require('../controllers/directorCtrl');
 
 
-dirRouter.get('/directors', (req, res, next) => {
-    db.all(`SELECT * FROM directors`, (err, direx) => {
-        if (err) next(err);
-        res.status(200).json(direx);
-    })
-})
+
+dirRouter.get('/directors', getDirectors);
 
 module.exports = dirRouter;
