@@ -22,6 +22,7 @@ app.use((req, res, next) => {
 // custom error handler must be at very bottom
 app.use( (err, req, res, next) => {
     // all errors go to here
+    res.status(err.status || 500)
     res.json({
         message: "Error error error!",
         err: err.message
