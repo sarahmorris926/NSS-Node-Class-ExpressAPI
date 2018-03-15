@@ -13,12 +13,18 @@ module.exports.getAll = () => {
 
 module.exports.getOne = (dirId) => {
     return new Promise( (resolve, reject) => {
-        db.get(`SELECT directors.*, movies.name AS "Movie Name", movies.studio AS "Studio"
+        db.get(`SELECT directors.*, group_concat(movies.name, ", ") "Movies Directed"
                 FROM directors
-                JOIN movies ON dir_id = movies.director_id
+                JOIN movies ON dir_id = director_id
                 WHERE dir_id=${dirId}`, (err, director) => {
             if (err) return reject(err);
             resolve(director)
         })
     })
 }
+
+
+// SELECT directors.*, group_concat(movies.name, ", ") movies_directed
+// FROM directors
+// JOIN movies ON dir_id = director_id
+// WHERE dir_id = ${id}
