@@ -16,7 +16,10 @@ module.exports.getAll = () => {
 
 module.exports.getOne = (movieId) => {
     return new Promise( (resolve, reject) => {
-        db.get(`SELECT * FROM movies WHERE movie_id=${movieId}`, (err, movie) => {
+        db.get(`SELECT movies.*, directors.name AS "Director" 
+                FROM movies
+                JOIN directors ON director_id = directors.dir_id
+                WHERE movie_id=${movieId}`, (err, movie) => {
             if (err) return reject(err);
             resolve(movie)
         })
